@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>결혼합니다</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.g static.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nanum Myeongjo', serif;
+      background: #fafafa;
+      color: #333;
+      min-height: 100vh;
+      line-height: 1.8;
+    }
+
+    .invitation {
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+      background: #ffffff;
+      min-height: 100vh;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
+    }
+
+    /* 상단 장식 */
+    .header {
+      text-align: center;
+      padding: 30px 0 40px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .header-line {
+      width: 40px;
+      height: 1px;
+      background: #ddd;
+      margin: 0 auto 20px;
+    }
+
+    .header-title {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      color: #888;
+    }
+
+    /* 신랑신부 이름 */
+    .names {
+      text-align: center;
+      padding: 50px 0;
+    }
+
+    .names .groom {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+    }
+
+    .names .and {
+      font-size: 14px;
+      color: #999;
+      margin: 12px 0;
+      letter-spacing: 0.2em;
+    }
+
+    .names .bride {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+    }
+
+    /* 예식 정보 */
+    .info-section {
+      padding: 30px 0;
+      border-top: 1px solid #eee;
+    }
+
+    .info-item {
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #f5f5f5;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      font-size: 11px;
+      color: #aaa;
+      letter-spacing: 0.2em;
+      margin-bottom: 8px;
+    }
+
+    .info-value {
+      font-size: 15px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    .info-value.date {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    /* 인사말 */
+    .greeting {
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .greeting-title {
+      font-size: 12px;
+      color: #999;
+      letter-spacing: 0.2em;
+      margin-bottom: 20px;
+    }
+
+    .greeting-text {
+      font-size: 14px;
+      color: #555;
+      line-height: 2;
+      white-space: pre-line;
+    }
+
+    /* 약도 이미지 스타일 */
+.map-image-container {
+  width: 100%;
+  padding: 0 10px; /* 양옆에 살짝 여백 */
+  margin-bottom: 20px;
+}
+
+.wedding-map-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* 모서리를 둥글게 */
+  border: 1px solid #eee; /* 아주 연한 테두리 */
+  display: block;
+}
+    /* 축의금 계좌 */
+    .bank-section {
+      background: #fafafa;
+      padding: 30px 24px;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+
+    .bank-title {
+      font-size: 12px;
+      color: #999;
+      letter-spacing: 0.2em;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .bank-info {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .bank-detail {
+      font-size: 14px;
+      color: #444;
+      margin: 6px 0;
+    }
+
+    .bank-detail strong {
+      display: inline-block;
+      width: 70px;
+      text-align: left;
+      font-weight: 500;
+      color: #666;
+    }
+
+    .copy-btn {
+      display: block;
+      width: 100%;
+      padding: 14px 24px;
+      background: #333;
+      color: #fff;
+      border: none;
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .copy-btn:hover {
+      background: #555;
+    }
+
+    .copy-btn:active {
+      transform: scale(0.98);
+    }
+
+    .copy-btn.copied {
+      background: #5a8f5a;
+    }
+
+    /* 하단 */
+    .footer {
+      text-align: center;
+      padding: 50px 0 20px;
+    }
+
+    .footer-line {
+      width: 30px;
+      height: 1px;
+      background: #ddd;
+      margin: 0 auto 20px;
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: #bbb;
+      letter-spacing: 0.1em;
+    }
+
+    /* 반응형 - 더 작은 화면 */
+    @media (max-width: 380px) {
+      .invitation {
+        padding: 30px 20px 50px;
+      }
+
+      .names .groom,
+      .names .bride {
+        font-size: 19px;
+      }
+
+      .info-value.date {
+        font-size: 15px;
+      }
+    }
+    /* 지도 섹션 스타일 */
+.map-section {
+  padding: 40px 0;
+  border-top: 1px solid #eee;
+}
+
+.map-title {
+  font-size: 12px;
+  color: #999;
+  letter-spacing: 0.2em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.map-placeholder {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.map-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.map-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 13px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.3s;
+}
+
+.map-btn.naver {
+  background: #03C75A; /* 네이버 브랜드 컬러 */
+  color: #fff;
+  width: 100%;
+  text-align: center;
+}
+
+.map-btn.naver:hover {
+  background: #02b350;
+}
+/* 갤러리 섹션 스타일 */
+.gallery-section {
+  padding: 50px 0;
+  border-top: 1px solid #eee;
+}
+
+.gallery-title {
+  font-size: 12px;
+  color: #999;
+  letter-spacing: 0.2em;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2열로 배치 */
+  gap: 10px; /* 사진 사이 간격 */
+  padding: 0 10px;
+}
+
+.gallery-item {
+  aspect-ratio: 1 / 1; /* 사진을 정사각형 비율로 유지 */
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지가 찌그러지지 않게 꽉 채움 */
+  transition: transform 0.3s ease;
+}
+
+/* 마우스를 올렸을 때 살짝 커지는 효과 (선택사항) */
+.gallery-item img:hover {
+  transform: scale(1.05);
+}
+/* 모달창 전체 배경 */
+.modal {
+  display: none; /* 평소에는 숨김 */
+  position: fixed;
+  z-index: 1000; /* 다른 요소보다 가장 위에 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* 반투명한 검은색 배경 */
+  cursor: zoom-out;
+}
+
+/* 모달에 뜨는 이미지 */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: auto;
+  max-width: 90%;
+  max-height: 80%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); /* 화면 중앙 정렬 */
+  border-radius: 4px;
+}
+
+/* 닫기 버튼 */
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.share-section {
+  padding: 20px 24px 40px;
+  text-align: center;
+}
+
+.share-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #FEE500; /* 카카오 노란색 */
+  color: #191919;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+  </style>
+  
+  
+</head>
+<body>
+  <div class="invitation">
+    <header class="header">
+      <div class="header-line"></div>
+      <p class="header-title">WEDDING INVITATION</p>
+      <div class="header-line"></div>
+    </header>
+
+    <section class="names">
+      <p class="groom">심재훈</p>
+      <p class="and">＆</p>
+      <p class="bride">이가현</p>
+    </section>
+
+    <section class="info-section">
+      <div class="info-item">
+        <p class="info-label">예식 일시</p>
+        <p class="info-value date">2026년 10월 25일 (토) 오후 12시30분</p>
+      </div>
+      <div class="info-item">
+        <p class="info-label">예식 장소</p>
+        <p class="info-value">셀럽앤어셈</p>
+        <p class="info-value" style="font-size: 13px; margin-top: 6px; color: #888;">서울시 강남구 언주로 711 건설회관 2층</p>
+      </div>
+    </section>
+    <section class="greeting">
+      <p class="greeting-title">인사말</p>
+      <p class="greeting-text">저희 두 사람의 소중한 시작에
+함께해 주시면 감사하겠습니다.
+바쁘신 중에도 참석해 주셔서
+진심으로 감사드립니다.</p>
+    </section>
+
+    <section class="gallery-section">
+      <p class="gallery-title">우리의 소중한 순간</p>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="photo1.jpg" alt="사진1" onclick="openModal(this.src)"></div>
+        <div class="gallery-item"><img src="photo2.jpg" alt="사진2" onclick="openModal(this.src)"></div>
+        <div class="gallery-item"><img src="photo3.jpg" alt="사진3" onclick="openModal(this.src)"></div>
+        <div class="gallery-item"><img src="photo4.jpg" alt="사진4" onclick="openModal(this.src)"></div>
+        <div class="gallery-item"><img src="photo5.jpg" alt="사진5" onclick="openModal(this.src)"></div>
+        <div class="gallery-item"><img src="photo6.jpg" alt="사진6" onclick="openModal(this.src)"></div>
+      </div>
+      
+      <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="fullImage">
+      </div>
+    </section>
+
+    <section class="map-section">
+      <p class="map-title">오시는 길</p>
+      
+      <div class="map-image-container">
+        <img src="map_image.png" alt="셀럽앤어셈 약도" class="wedding-map-img">
+      </div>
+    
+      <div class="map-buttons">
+        <a href="https://m.map.naver.com/search2/search.naver?query=셀럽앤어셈" target="_blank" class="map-btn naver">
+          네이버 지도 앱에서 보기
+        </a>
+      </div>
+    </section>
+
+    
+
+    <section class="bank-section">
+      <p class="bank-title">마음 전하실 곳</p>
+      <div class="bank-info">
+        <p class="bank-detail"><strong>은행</strong> ○○은행</p>
+        <p class="bank-detail"><strong>계좌번호</strong> 123-456-789012</p>
+        <p class="bank-detail"><strong>예금주</strong> 홍길동</p>
+      </div>
+      <button class="copy-btn" onclick="copyAccount()">계좌번호 복사</button>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-line"></div>
+      <p class="footer-text">감사합니다</p>
+    </footer>
+  </div>
+
+  <section class="share-section">
+    <button id="kakaotalk-sharing-btn" class="share-btn">
+      <img src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+        alt="카카오톡 공유 버튼" style="width: 20px; margin-right: 8px; vertical-align: middle;">
+      카카오톡으로 공유하기
+    </button>
+  </section>
+  
+  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js" integrity="sha384-lLeY8v6Y9f33K35C+0PIm/qN25X08xV/kYp9p0p3z4p4y8p" crossorigin="anonymous"></script>
+
+  <script>
+    function copyAccount() {
+      const accountNumber = '123-456-789012';
+      const bankInfo = `○○은행 ${accountNumber} 예금주: 홍길동`;
+
+      navigator.clipboard.writeText(bankInfo).then(function() {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = '복사되었습니다 ✓';
+        btn.classList.add('copied');
+
+        setTimeout(function() {
+          btn.textContent = '계좌번호 복사';
+          btn.classList.remove('copied');
+        }, 2000);
+      }).catch(function() {
+        alert('복사에 실패했습니다. 계좌번호: ' + accountNumber);
+      });
+    }
+    // 모달 열기 함수
+function openModal(imageSrc) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("fullImage");
+  
+  modal.style.display = "block"; // 모달 보이기
+  modalImg.src = imageSrc; // 클릭한 이미지 경로를 큰 이미지에 넣어줌
+  
+  // 모달이 열릴 때 스크롤 방지 (선택사항)
+  document.body.style.overflow = "hidden";
+}
+
+// 모달 닫기 함수
+function closeModal() {
+  const modal = document.getElementById("imageModal");
+  modal.style.display = "none"; // 모달 숨기기
+  
+  // 스크롤 방지 해제
+  document.body.style.overflow = "auto";
+}
+
+// 카카오 초기화 (한 번만 실행)
+try {
+  Kakao.init('YOUR_JAVASCRIPT_KEY'); // 4a1a25a74c026e4dcf74bbda4aa31bc6
+} catch (e) {}
+
+Kakao.Share.createDefaultButton({
+  container: '#kakaotalk-sharing-btn',
+  objectType: 'feed',
+  content: {
+    title: '심재훈 ♥ 이가현 결혼합니다',
+    description: '2026년 10월 25일 토요일 오후 12시 30분\n셀럽앤어셈',
+    imageUrl:
+      'https://your-domain.com/photo5.jpg', // 친구에게 보여줄 대표 사진 주소
+    link: {
+      mobileWebUrl: 'https://your-domain.com', // 내 청첩장 실제 주소
+      webUrl: 'https://your-domain.com',
+    },
+  },
+  buttons: [
+    {
+      title: '모바일 청첩장 보기',
+      link: {
+        mobileWebUrl: 'https://your-domain.com',
+        webUrl: 'https://your-domain.com',
+      },
+    },
+  ],
+});
+  </script>
+</body>
+</html>
